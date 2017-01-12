@@ -39,7 +39,7 @@ We are going to use `String.prototype.charCodeAt` to accept every character.
 
       var num = name.split('').map((x) => x.charCodeAt()).reduce((a, b) => a + b)
 
-      if (num < inf) num =+ inf
+      if (num < inf) num += inf
       if (num > sup) num = (num % sup) + inf
       return num
     }
