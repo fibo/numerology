@@ -1,13 +1,14 @@
 {
   "name": "numerology",
   "version": "0.0.0",
-  "description": "converts a string to a number in the given range, for instance you can get a port number from a string",
+  "description": "converts a string to a number in the given range",
   "author": {
     "name": "Gianluca Casati",
     "url": "http://g14n.info"
   },
-  "main": "index.js",
+  "main": "numerology.js",
   "scripts": {
+    "postversion": "git push origin v${npm_package_version}; npm publish; git push origin master",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -24,5 +25,5 @@
   "bugs": {
     "url": "https://github.com/fibo/numerology/issues"
   },
-  "homepage": "http://npm.im/numerology"
+  "homepage": "http://g14n.info/numerology"
 }

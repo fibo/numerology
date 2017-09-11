@@ -1,9 +1,9 @@
 # numerology
 
-> converts a string to a number in the given range, for instance you can get a port number from a string
+> converts a string to a number in the given range
 
 [Installation](#installation) |
-[Usage](#usage) |
+[Examples](#examples) |
 [Annotated source](#annotated-source) |
 [License](#license)
 
@@ -11,36 +11,64 @@
 
 ## Installation
 
-```
-npm install numerology --save
+```bash
+npm install numerology
 ```
 
-## Usage
+### Examples
 
-Convert a name to a port number, deterministically
+## Name to port number
+
+> Convert a name to a port number, deterministically
 
 ```javascript
 const numerology = require('numerology')
 
-const port = numerology('my-app-name')
+const userPortsRange = [1024, 49151]
+const port = numerology('my-app-name', userPortsRange)
+```
+
+## Distribute domains
+
+Suppose you have a list of domains you want to distribute in 6 folders,
+in a random but balanced way. You can associate a number from 1 to 6 with
+the snippet `numerology(domain, [1, 7])`, launch the following command
+to get the result.
+
+```bash
+node examples/distributeDomains.js | sort | uniq -c
+ 148 folder1
+ 148 folder2
+ 139 folder3
+ 138 folder4
+ 146 folder5
+ 153 folder6
+ 128 folder7
 ```
 
 ## Annotated source
 
-[Latin alhpabet system numerology](https://en.wikipedia.org/wiki/Numerology#Latin_alphabet_systems) assigns a number to every lower case latin letter.
-We are going to use `String.prototype.charCodeAt` to accept every character.
-**TODO** implement actual numerology algorithm.
+[Latin alphabet system numerology](https://en.wikipedia.org/wiki/Numerology#Latin_alphabet_systems) assigns a number to every lower case latin letter.
+We are going to use `String.prototype.charCodeAt` to accept every character and `String.prototype.toLowerCase` to make it **case insensitive**.
+Compatibility with classic numerology actually is not supported.
+
+* @param {String} name you want to convert into a number.
+* @param {Array} [range] defaults to `[1, 9]`.
+* @returns {Number} num.
 
     function numerology (name, range) {
-      if (arguments.length === 1) range = [1024, 49151]
+      if (arguments.length === 1) range = [1, 9]
 
       const inf = range[0]
       const sup = range[1]
 
-      var num = name.split('').map((x) => x.charCodeAt()).reduce((a, b) => a + b)
+      var num = name.split('')
+                    .map((x) => x.toLowerCase().charCodeAt())
+                    .reduce((a, b) => a + b)
 
       if (num < inf) num += inf
       if (num > sup) num = (num % sup) + inf
+
       return num
     }
 

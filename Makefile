@@ -1,3 +1,3 @@
-.PHONY: index.js
-index.js:
-	grep '    ' README.md | sed -e 's/    //' > index.js
+.PHONY: numerology.js
+numerology.js:
+	grep '    ' README.md | sed -e 's/    //' > numerology.js
