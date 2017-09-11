@@ -52,9 +52,11 @@ node examples/distributeDomains.js | sort | uniq -c
 We are going to use `String.prototype.charCodeAt` to accept every character and `String.prototype.toLowerCase` to make it **case insensitive**.
 Compatibility with classic numerology actually is not supported.
 
-* @param {String} name you want to convert into a number.
-* @param {Array} [range] defaults to `[1, 9]`.
-* @returns {Number} num.
+    /**
+     * @param {String} name you want to convert into a number.
+     * @param {Array} [range] defaults to `[1, 9]`.
+     * @returns {Number} num.
+     */
 
     function numerology (name, range) {
       if (arguments.length === 1) range = [1, 9]
