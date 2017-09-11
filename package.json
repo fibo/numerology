@@ -1,6 +1,6 @@
 {
   "name": "numerology",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "converts a string to a number in the given range",
   "author": {
     "name": "Gianluca Casati",
