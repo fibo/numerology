@@ -1,10 +1,10 @@
 /**
  * @param {String} name you want to convert into a number.
- * @param {Array} [range] defaults to `[1, 9]`.
+ * @param {Array} [range] defaults to `[0, 9]`.
  * @returns {Number} num.
  */
 function numerology (name, range) {
-  if (arguments.length === 1) range = [1, 9]
+  if (arguments.length === 1) range = [0, 9]
   const inf = range[0]
   const sup = range[1]
   var num = name.split('')
